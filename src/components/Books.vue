@@ -50,9 +50,11 @@ const books = ref([
             </v-app-bar>
         
             <v-main>
-                <div v-for="book in books">
-                    <Book :book="book" />
-                </div>
+                <v-container>
+                    <div v-for="book in books">
+                        <Book :book="book" />
+                    </div>
+                </v-container>
             </v-main>
         </v-layout>
     </v-card>
