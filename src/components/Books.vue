@@ -4,22 +4,30 @@ import { ref } from 'vue'
 
 const books = ref([
     {
-        showBook: true,
         title: "Ender's Game",
         author: "Orson Scott Card",
-        age: 72
+        age: 72,
+        isFav: false
     },
     {
-        showBook: true,
         title: "The Final Empire",
-        author: "Brandom Sanderson",
-        age: 47
+        author: "Brandon Sanderson",
+        age: 47,
+        isFav: false
     }
 ])
+
+const showFavs = ref(false)
+
+function toggleShowFavs() {
+    showFavs.value = !showFavs.value
+    console.log(showFavs.value)
+}
+
 </script>
 
 <template>
-    <v-card max-width="448" class="mx-auto" color="grey-lighten-3">
+    <v-card max-width="488" class="mx-auto" color="grey-lighten-3">
         <v-layout>
             <v-app-bar color="teal-darken-4">
                 <template v-slot:image>
@@ -36,23 +44,27 @@ const books = ref([
 
                 <v-spacer></v-spacer>
 
-                <v-btn icon>
-                <v-icon>mdi-magnify</v-icon>
+                <v-btn @click="toggleShowFavs">
+                    <span v-if="showFavs">Show All</span>
+                    <span v-else>Show Favorites</span>
                 </v-btn>
 
                 <v-btn icon>
-                <v-icon>mdi-heart</v-icon>
+                    <v-icon>mdi-magnify</v-icon>
                 </v-btn>
 
+
                 <v-btn icon>
-                <v-icon>mdi-dots-vertical</v-icon>
+                    <v-icon>mdi-dots-vertical</v-icon>
                 </v-btn>
             </v-app-bar>
         
             <v-main>
                 <v-container>
                     <div v-for="book in books">
-                        <Book :book="book" />
+                        <span v-show="!showFavs | (showFavs & book.isFav)">
+                            <Book :book="book" />
+                        </span>
                     </div>
                 </v-container>
             </v-main>
