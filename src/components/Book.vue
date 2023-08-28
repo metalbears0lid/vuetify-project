@@ -10,14 +10,21 @@ function toggleFav(book) {
 </script>
 
 <style>
-    .v-card .fav {
-        background-color: #ff9ed2
-    }
+.v-card .fav {
+    background-color: #d4faff;
+}
+
+img.book {
+    width: auto;
+    height: 150px;
+}
 </style>
 
 <template>
-    <v-card :title="book.title" :subtitle="book.author" class="mb-2" :class="{ fav: book.isFav}">
-        <v-card-text>{{ book.age }}</v-card-text>
+    <v-card :title="book.title" :subtitle="book.author" class="mb-2" :class="{ fav: book.isFav }">
+        <v-card-text>
+            <img class="book" :src="book.img" :alt="book.title">
+        </v-card-text>
         <v-card-actions>
             <v-btn @click="toggleFav(book)" icon>
                 <v-icon v-if="book.isFav">mdi-heart</v-icon>

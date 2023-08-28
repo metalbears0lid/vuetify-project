@@ -7,12 +7,21 @@ const books = ref([
         title: "Ender's Game",
         author: "Orson Scott Card",
         age: 72,
+        img: "src/assets/ender.png",
         isFav: false
     },
     {
         title: "The Final Empire",
         author: "Brandon Sanderson",
         age: 47,
+        img: "src/assets/empire.png",
+        isFav: false
+    },
+    {
+        title: "Where The Wild Things Are",
+        author: "Maurice Sendak",
+        age: 83,
+        img: "src/assets/wild.png",
         isFav: false
     }
 ])
@@ -31,9 +40,7 @@ function toggleShowFavs() {
         <v-layout>
             <v-app-bar color="teal-darken-4">
                 <template v-slot:image>
-                <v-img
-                    gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"
-                ></v-img>
+                    <v-img gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"></v-img>
                 </template>
 
                 <template v-slot:prepend>
@@ -58,7 +65,7 @@ function toggleShowFavs() {
                     <v-icon>mdi-dots-vertical</v-icon>
                 </v-btn>
             </v-app-bar>
-        
+
             <v-main>
                 <v-container>
                     <div v-for="book in books">
