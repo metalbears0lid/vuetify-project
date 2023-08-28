@@ -23,6 +23,13 @@ const books = ref([
         age: 83,
         img: "src/assets/wild.png",
         isFav: false
+    },
+    {
+        title: "Harry Potter and the Sorcerer's Stone",
+        author: "J. K. Rowling",
+        age: 58,
+        img: "src/assets/harrypotter.png",
+        isFav: false
     }
 ])
 
@@ -35,8 +42,19 @@ function toggleShowFavs() {
 
 </script>
 
+
+<style>
+.v-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+</style>
+
+
 <template>
-    <v-card max-width="488" class="mx-auto" color="grey-lighten-3">
+    <v-card max-width="960" class="mx-auto" color="grey-lighten-3">
         <v-layout>
             <v-app-bar color="teal-darken-4">
                 <template v-slot:image>
