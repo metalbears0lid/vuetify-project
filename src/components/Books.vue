@@ -17,7 +17,7 @@ function toggleShowFavs() {
 
 
 <style>
-.v-main {
+.v-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -58,13 +58,13 @@ function toggleShowFavs() {
             </v-app-bar>
 
             <v-main>
-
-                <div v-for="book in books">
-                    <span v-show="!showFavs | (showFavs & book.isFav)">
-                        <Book :book="book" />
-                    </span>
-                </div>
-
+                <v-container fluid>
+                    <div v-for="book in books">
+                        <span v-show="!showFavs | (showFavs & book.isFav)">
+                            <Book :book="book" />
+                        </span>
+                    </div>
+                </v-container>
             </v-main>
         </v-layout>
     </v-card>
