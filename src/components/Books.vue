@@ -2,36 +2,9 @@
 import Book from '@/components/Book.vue'
 import { ref } from 'vue'
 
-const books = ref([
-    {
-        title: "Ender's Game",
-        author: "Orson Scott Card",
-        age: 72,
-        img: "src/assets/ender.png",
-        isFav: false
-    },
-    {
-        title: "The Final Empire",
-        author: "Brandon Sanderson",
-        age: 47,
-        img: "src/assets/empire.png",
-        isFav: false
-    },
-    {
-        title: "Where The Wild Things Are",
-        author: "Maurice Sendak",
-        age: 83,
-        img: "src/assets/wild.png",
-        isFav: false
-    },
-    {
-        title: "Harry Potter and the Sorcerer's Stone",
-        author: "J. K. Rowling",
-        age: 58,
-        img: "src/assets/harrypotter.png",
-        isFav: false
-    }
-])
+const props = defineProps({
+    books: Array
+})
 
 const showFavs = ref(false)
 
@@ -44,7 +17,7 @@ function toggleShowFavs() {
 
 
 <style>
-.v-container {
+.v-main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -54,7 +27,7 @@ function toggleShowFavs() {
 
 
 <template>
-    <v-card max-width="960" class="mx-auto" color="grey-lighten-3">
+    <v-card max-width="1600" class="mx-auto" color="grey-lighten-3">
         <v-layout>
             <v-app-bar color="teal-darken-4">
                 <template v-slot:image>
@@ -85,13 +58,13 @@ function toggleShowFavs() {
             </v-app-bar>
 
             <v-main>
-                <v-container>
-                    <div v-for="book in books">
-                        <span v-show="!showFavs | (showFavs & book.isFav)">
-                            <Book :book="book" />
-                        </span>
-                    </div>
-                </v-container>
+
+                <div v-for="book in books">
+                    <span v-show="!showFavs | (showFavs & book.isFav)">
+                        <Book :book="book" />
+                    </span>
+                </div>
+
             </v-main>
         </v-layout>
     </v-card>

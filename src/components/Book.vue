@@ -21,7 +21,7 @@ img.book {
 </style>
 
 <template>
-    <v-card width="300" :title="book.title" :subtitle="book.author" class="mb-2 mr-2" :class="{ fav: book.isFav }">
+    <v-card width="300" :title="book.title" :subtitle="book.author" class="mb-2 mx-1" :class="{ fav: book.isFav }">
         <v-card-text>
             <img class="book" :src="book.img" :alt="book.title">
         </v-card-text>
